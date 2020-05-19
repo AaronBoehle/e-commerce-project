@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "aaron-boehle-product-availability"
+    }
+  },
+  "defaultProject": "aaron-boehle-product-availability",
+  "cli": {
+    "analytics": "3d53392f-b94c-4136-bb83-e6806989bd55"
+  }
 }

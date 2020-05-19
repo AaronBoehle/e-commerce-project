@@ -1,0 +1,72 @@
+<div class="row my-5 p-2 border-bottom" style="min-height: 450px">
+  <div class="col-md-4">
+    <div class="row py-1">
+      <div class="col-md-12">
+        <p>Path goes here</p>
+      </div>
+      <div
+        class="col-md-12"
+        style="min-height: 350px">
+        <img
+          class="img-fluid img-responsive"
+          [src]="product.imagePathUrl">
+      </div>
+      <div class="col-md-12">
+        <!-- TODO: iterate through product.imagePath once imagePath has been added to model -->
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-5 pb-4">
+    <div class="col-md-12">
+      <h4>{{ product.name }}</h4>
+      <p>SKU: {{product.sku}} </p>
+    </div>
+    <hr>
+    <div class="col-md-12 p-1">
+      <p>{{product.description }}</p>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>$XXXX.XX</h3>
+        <ul class="list-inline my-0">
+          <li>List Price:<s class="text-danger"><b>{{ product.listPrice | currency }}</b></s></li>
+          <li>Your Savings:</li>
+        </ul>
+      </div>
+      <div class="col-md-12">
+        <p
+          *ngIf="inStock && product.listPrice > 100"
+          class="pt-2"
+          style="color: #ff0000; font-size: .9em">10% off your first purchase with signup!</p>
+      </div>
+      <div class="col-md-12">
+        <h5
+          class="pt-2"
+          [ngStyle]="{color: inStock ? 'green' : 'red'}">{{ inStock ? 'In Stock' : 'Out of Stock' }}</h5>
+        <div *ngIf="inStock" class="row pt-2">
+          <div class="col-lg-4 py-2">
+            <p>Quantity: </p>
+          </div>
+          <div class="col-lg-6">
+            <select class="custom-select" id="inputGroupSelect01">
+              <option selected value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="0">∞</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-warning border-dark m-1" [disabled]="!inStock" style="width: 200px;">Add to Cart</button>
+            <button class="btn btn-light border-dark m-1" style="width: 200px">Add to List</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

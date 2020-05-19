@@ -1,0 +1,18 @@
+<div class="row py-3">
+  <div class="col-md-3 pt-2 border-right">
+    <h5>Filter By</h5>
+    <hr>
+  </div>
+
+  <div class="col-md-9 px-5 py-2">
+    <h5>{{ products.length }} items</h5>
+    <p class="py-2">Search path goes here</p>
+    <hr>
+    <app-product-item
+      *ngFor="let productEl of products; let i = index"
+      [product]="productEl"
+      [productIndex]="i"
+    ></app-product-item>
+
+  </div>
+</div>
