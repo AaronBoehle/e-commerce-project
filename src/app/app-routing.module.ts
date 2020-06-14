@@ -9,7 +9,7 @@ import {ProductResolverService} from './products/product-resolver.service';
 import {AuthComponent} from './auth/auth.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/shop', pathMatch: 'full'},
+  { path: '', redirectTo: '/products', pathMatch: 'full'},
   { path: 'products', component: ProductsComponent, children: [
       { path: '', component: ProductStartComponent },
       { path: 'shop', component: ProductListComponent, resolve: [ProductResolverService]},
