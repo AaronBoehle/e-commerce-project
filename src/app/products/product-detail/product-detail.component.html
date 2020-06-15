@@ -1,4 +1,6 @@
-<div class="row my-5 p-2 border-bottom" style="min-height: 450px">
+<div
+  *ngIf="(product | async) as product else null"
+  class="row my-5 p-2 border-bottom" style="min-height: 450px" >
   <div class="col-md-4">
     <div class="row py-1">
       <div class="col-md-12">
@@ -8,7 +10,7 @@
         class="col-md-12"
         style="min-height: 350px">
         <img
-          class="img-fluid img-responsive"
+        class="img-fluid img-responsive"
           [src]="product.imagePathUrl">
       </div>
       <div class="col-md-12">
@@ -39,15 +41,15 @@
       </div>
       <div class="col-md-12">
         <p
-          *ngIf="inStock && product.listPrice > 100"
+          *ngIf="product.quantity > 0c"
           class="pt-2"
           style="color: #ff0000; font-size: .9em">10% off your first purchase with signup!</p>
       </div>
       <div class="col-md-12">
         <h5
           class="pt-2"
-          [ngStyle]="{color: inStock ? 'green' : 'red'}">{{ inStock ? 'In Stock' : 'Out of Stock' }}</h5>
-        <div *ngIf="inStock" class="row pt-2">
+          [ngStyle]="{color: product.quantity > 0 ? 'green' : 'red'}">{{ product.quantity > 0 ? 'In Stock' : 'Out of Stock'}}</h5>
+        <div *ngIf="(product.quantity > 0)" class="row pt-2">
           <div class="col-lg-4 py-2">
             <p>Quantity: </p>
           </div>
@@ -62,7 +64,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <button class="btn btn-warning border-dark m-1" [disabled]="!inStock" style="width: 200px;">Add to Cart</button>
+            <button class="btn btn-warning border-dark m-1" [disabled]="!(product.quantity > 0)" style="width: 200px;">Add to Cart</button>
             <button class="btn btn-light border-dark m-1" style="width: 200px">Add to List</button>
           </div>
         </div>

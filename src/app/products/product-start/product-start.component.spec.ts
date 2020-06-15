@@ -1,13 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductStartComponent } from './product-start.component';
+import {RouterTestingModule} from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
 
-describe('ProductMainComponent', () => {
+describe('ProductStartComponent', () => {
   let component: ProductStartComponent;
   let fixture: ComponentFixture<ProductStartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+      ],
       declarations: [ ProductStartComponent ]
     })
     .compileComponents();

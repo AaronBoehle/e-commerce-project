@@ -18,8 +18,8 @@ export class AuthComponent implements OnInit {
     this.isLoginMode = !this.isLoginMode;
   }
 
-  onSubmit(form: NgForm) {
-    form.reset();
+  onSubmit(ngForm: NgForm) {
+    ngForm.reset();
 
   }
 

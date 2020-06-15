@@ -11,10 +11,7 @@ export class DataStorageService {
 
   storeProducts() {
     const products = this.productService.getProducts();
-    this.http.put('https://product-availability-56676.firebaseio.com/products.json', products)
-      .subscribe(response => {
-        console.log(response);
-      });
+    this.http.put<Product[]>('https://product-availability-56676.firebaseio.com/products.json', products).pipe();
   }
 
   getProducts() {
@@ -23,6 +20,5 @@ export class DataStorageService {
         tap(products => {
           this.productService.setProducts(products);
         }));
-      // .subscribe((products) => {})
     }
 }

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, TestBed} from '@angular/core/testing';
 
 import { ProductItemComponent } from './product-item.component';
 
@@ -15,8 +15,9 @@ describe('ProductItemComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductItemComponent);
-    component = fixture.componentInstance;
+    component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
+
   });
 
   it('should create', () => {

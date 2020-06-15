@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "@ngrx/store": "^9.2.0",
     "bootstrap": "^4.4.1",
     "install": "^0.13.0",
     "ngx-bootstrap": "^5.6.1",
