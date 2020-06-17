@@ -13,6 +13,7 @@ import { ProductItemComponent } from './products/product-list/product-item/produ
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthComponent } from './auth/auth.component';
     ProductListComponent,
     ProductDetailComponent,
     ProductItemComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
