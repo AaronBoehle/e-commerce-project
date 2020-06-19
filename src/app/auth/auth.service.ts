@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
+import {BehaviorSubject, Subject, throwError} from 'rxjs';
+import {User} from './user.model';
+import {Router} from '@angular/router';
 
 export interface AuthResponseData {
   kind: string;
@@ -15,8 +17,10 @@ export interface AuthResponseData {
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+  user = new BehaviorSubject<User>(null);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   signup(email: string, password: string) {
@@ -26,7 +30,15 @@ export class AuthService {
         email,
         password,
         returnSecureToken: true
-      }).pipe(catchError(this.handleError));
+      })
+      .pipe(catchError(this.handleError),
+        tap(response => {
+        this.handleAuth(
+          response.email,
+          response.localId,
+          response.idToken,
+          +response.expiresIn);
+    }));
   }
 
   login(email: string, password: string) {
@@ -36,7 +48,30 @@ export class AuthService {
         email,
         password,
         returnSecureToken: true
-      }).pipe(catchError(this.handleError));
+      })
+      .pipe(catchError(this.handleError),
+        tap(response => {
+          this.handleAuth(
+            response.email,
+            response.localId,
+            response.idToken,
+            +response.expiresIn);
+        }));
+  }
+
+  logout(){
+    this.user.next(null);
+    this.router.navigate(['/products']);
+  }
+
+  private handleAuth(email: string, userId: string, token: string, expiresIn: number) {
+    const expirationDate = new Date(new Date().getTime() + (+expiresIn * 1000));
+    const user = new User(
+      email,
+      userId,
+      token,
+      expirationDate);
+    this.user.next(user);
   }
 
   private handleError(e: HttpErrorResponse) {
@@ -55,6 +90,6 @@ export class AuthService {
         errorMessage = 'This password is incorrect';
         break;
     }
-    return  throwError(errorMessage);
+    return throwError(errorMessage);
   }
 }

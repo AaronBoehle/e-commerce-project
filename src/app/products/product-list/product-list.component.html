@@ -4,15 +4,14 @@
     <hr>
   </div>
 
-  <div class="col-md-9 px-5 py-2">
+  <div class="col-md-9 px-5 py-2" *ngIf="getProducts() | async as products">
     <h5>{{ products.length }} items</h5>
     <p class="py-2">Search path goes here</p>
     <hr>
     <app-product-item
-      *ngFor="let productEl of products; let i = index"
-      [product]="productEl"
+      *ngFor="let product of products; let i = index"
+      [product]="product"
       [productIndex]="i"
     ></app-product-item>
-
   </div>
 </div>

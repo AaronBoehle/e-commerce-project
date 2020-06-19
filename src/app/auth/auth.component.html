@@ -2,12 +2,13 @@
   <div *ngIf="isLoading" style="text-align: center;" class="my-5">
     <app-loading-spinner></app-loading-spinner>
   </div>
-  <div class="col-md-6 p-5 m-5 mx-md-auto border rounded">
+  <div class="col-md-6 p-5 m-5 mx-md-auto border rounded"
+       *ngIf="!isLoading">
     <h5 class="pb-3">Welcome to Product Availability</h5>
     <div *ngIf="error" class="alert alert-danger">
       <p>{{ error }}</p>
     </div>
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
 <!--      <div *ngIf="!isLoginMode" class="form-group">-->
 <!--        <label for="username">Username</label>-->
 <!--        <input-->

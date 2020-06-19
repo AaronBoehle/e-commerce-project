@@ -21,16 +21,18 @@
     <span class="text-secondary" style="font-size: .75em">SKU:{{product.sku}}</span>
     <h5 class="text-dark pt-2"><b>{{ product.listPrice | currency }}</b></h5>
     <span
-      [ngStyle]="{color: inStock ? 'green' : 'red'}">{{ inStock ? 'In Stock' : 'Out of Stock' }}</span>
+      [ngStyle]="{color: (stockStatus() | async) ? 'green' : 'red'}">
+      {{ (stockStatus() | async) ? 'In Stock' : 'Out of Stock' }}
+    </span>
     <p
-      *ngIf="inStock && product.listPrice > 100"
+      *ngIf="(stockStatus() | async) && product.listPrice > 100"
       class="py-1 m-0"
       style="color: red; font-size: .9em">
       10% off your first purchase with signup!
     </p>
   </div>
   <div class="col-md-2">
-    <button class="btn btn-warning border-dark mx-1 my-2" style="width: 150px" [disabled]="!inStock">Add to Cart</button>
+    <button class="btn btn-warning border-dark mx-1 my-2" style="width: 150px" [disabled]="!(stockStatus() | async)">Add to Cart</button>
     <div class="btn-group" style="width: 150px">
       <button
         type="button"

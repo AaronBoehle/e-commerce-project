@@ -24,7 +24,6 @@ describe('ProductDetailComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProductDetailComponent);
     component = fixture.debugElement.componentInstance;
-    component.inStock = true;
     fixture.detectChanges();
     compiled = fixture.debugElement.nativeElement;
   });
