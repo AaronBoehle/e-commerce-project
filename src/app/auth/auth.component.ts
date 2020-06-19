@@ -3,7 +3,6 @@ import {NgForm} from '@angular/forms';
 import {AuthResponseData, AuthService} from './auth.service';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
-import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth',

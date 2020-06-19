@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getProducts(): Observable<Product[]> {
+  getProducts() {
     return new Observable<Product[]>(products => {
       products.next(this.productService.getProducts());
     });

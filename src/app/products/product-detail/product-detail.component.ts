@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from '../product.model';
 import {ProductService} from '../product.service';
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import {ActivatedRoute, Params} from '@angular/router';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -10,9 +9,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  product: Observable<Product>;
   id: number;
-  inStock: Observable<boolean>;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -24,11 +21,10 @@ export class ProductDetailComponent implements OnInit {
         this.id = +params['id'];
       }
     );
-    this.getProduct();
   }
 
   getProduct(){
-    this.product =  new Observable(subscriber => {
+    return new Observable(subscriber => {
       subscriber.next(
         this.productService.getProduct(this.id));
     });

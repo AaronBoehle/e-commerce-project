@@ -1,5 +1,5 @@
 <div
-  *ngIf="(product | async) as product else null"
+  *ngIf="(getProduct() | async) as product else null"
   class="row my-5 p-2 border-bottom" style="min-height: 450px" >
   <div class="col-md-4">
     <div class="row py-1">
