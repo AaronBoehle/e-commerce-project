@@ -14,15 +14,9 @@ export class DataStorageService {
 
   storeProducts() {
     const products = this.productService.getProducts();
-    this.authService.user
-      .pipe(
-        take(1),
-        exhaustMap(user => {
-          return this.http.put<Product[]>(
+    return this.http.put<Product[]>(
             'https://product-availability-56676.firebaseio.com/products.json',
             {products});
-        }),
-      );
   }
 
   getProducts() {
