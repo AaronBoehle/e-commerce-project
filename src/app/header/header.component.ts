@@ -34,4 +34,8 @@ export class HeaderComponent implements OnInit {
     this.dataStorageService.storeProducts();
   }
 
+  onShoppingList() {
+
+  }
+
 }

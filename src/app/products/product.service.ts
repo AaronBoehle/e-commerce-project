@@ -4,8 +4,8 @@ import {Product} from './product.model';
 @Injectable({providedIn: 'root'})
 export class ProductService {
 
-
   private products: Product[] = [];
+
   constructor() {}
 
   setProducts(products: Product[]) {

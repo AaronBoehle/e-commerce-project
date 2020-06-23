@@ -27,7 +27,7 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     ProductDetailComponent,
     ProductItemComponent,
     AuthComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
