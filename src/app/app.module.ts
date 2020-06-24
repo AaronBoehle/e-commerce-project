@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
+import { RegistryComponent } from './registry/registry.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {AuthInterceptorService} from './auth/auth-interceptor.service';
     ProductItemComponent,
     AuthComponent,
     LoadingSpinnerComponent,
+    RegistryComponent,
   ],
   imports: [
     BrowserModule,

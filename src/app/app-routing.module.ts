@@ -7,6 +7,7 @@ import {ProductDetailComponent} from './products/product-detail/product-detail.c
 import {ProductListComponent} from './products/product-list/product-list.component';
 import {ProductResolverService} from './products/product-resolver.service';
 import {AuthComponent} from './auth/auth.component';
+import {RegistryComponent} from './registry/registry.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
       { path: 'shop', component: ProductListComponent, resolve: [ProductResolverService]},
       { path: 'shop/:id', component: ProductDetailComponent, resolve: [ProductResolverService]}
     ]},
+  { path: 'registry', component: RegistryComponent },
   { path: 'auth', component: AuthComponent },
   { path: 'error', component: ErrorPageComponent},
   { path: '**', redirectTo: '/error'},
