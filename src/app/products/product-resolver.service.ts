@@ -14,7 +14,7 @@ export class ProductResolverService implements Resolve<Product[]>{
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<Product[]> | Promise<Product[]> | Product[] {
-    const products = this.productService.getProducts();
+    const products: Product[] = this.productService.getProducts();
     return (products.length === 0) ? this.dataStorageService.getProducts() : products;
   }
 

@@ -18,9 +18,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'aaron-boehle-product-availability'`, () => {
+  it(`should have as title 'product-availability-ui'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('aaron-boehle-product-availability');
+    expect(app.title).toEqual('product-availability-ui');
   });
 });

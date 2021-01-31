@@ -3,6 +3,7 @@ import {DataStorageService} from '../shared/services/data-storage.service';
 import {AuthService} from '../auth/auth.service';
 import {Observable, Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {User} from '../user/user.model';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getUser() {
+  getUser(): Observable<User>{
     return this.authService.user
       .pipe(
         tap(user => {
@@ -26,16 +27,12 @@ export class HeaderComponent implements OnInit {
         }));
   }
 
-  onLogout() {
+  onLogout(): void {
     this.authService.logout();
   }
 
-  onSaveProducts() {
+  onSaveProducts(): void {
     this.dataStorageService.storeProducts();
-  }
-
-  onShoppingList() {
-
   }
 
 }

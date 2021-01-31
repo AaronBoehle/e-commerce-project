@@ -20,13 +20,13 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSwitchMode() {
+  onSwitchMode(): void {
     this.isLoginMode = !this.isLoginMode;
   }
 
-  onSubmit(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
+  onSubmit(form: NgForm): void {
+    const email: boolean | string = form.value.email;
+    const password: string = form.value.password;
     let authObservable: Observable<AuthResponseData>;
     this.isLoading = true;
 
@@ -38,13 +38,11 @@ export class AuthComponent implements OnInit {
       : this.authService.signup(email, password);
 
     authObservable.subscribe(
-      data => {
-        console.log(data);
+      () => {
         this.isLoading = false;
         this.router.navigate(['/products']);
       },
       errorMessage => {
-        console.log(errorMessage);
         this.error = errorMessage;
         this.isLoading = false;
       }

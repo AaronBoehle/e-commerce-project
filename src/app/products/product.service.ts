@@ -1,22 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Product} from './product.model';
-
 @Injectable({providedIn: 'root'})
 export class ProductService {
-
   private products: Product[] = [];
 
   constructor() {}
 
-  setProducts(products: Product[]) {
+  setProducts(products: Product[]): void {
     this.products = products;
   }
 
-  getProducts() {
+  getProducts(): Product[] {
     return this.products.slice();
   }
 
-  getProduct(index: number) {
+  getProduct(index: number): Product {
     return this.products[index];
   }
 }

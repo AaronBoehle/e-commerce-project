@@ -13,11 +13,11 @@ export class ProductStartComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onViewProduct() {
+  onViewProduct(): void {
     this.router.navigate(['products/shop/1']);
   }
 
-  onViewAllProducts() {
+  onViewAllProducts(): void {
     this.router.navigate(['products/shop']);
   }
 }

@@ -11,7 +11,7 @@
         style="min-height: 350px">
         <img
         class="img-fluid img-responsive"
-          [src]="product.imagePathUrl">
+          [src]="product.imagePathUrl" alt="Image">
       </div>
       <div class="col-md-12">
         <!-- TODO: iterate through product.imagePath once imagePath has been added to model -->
@@ -22,11 +22,11 @@
   <div class="col-md-5 pb-4">
     <div class="col-md-12">
       <h4>{{ product.name }}</h4>
-      <p>SKU: {{product.sku}} </p>
+      <p>SKU: {{ product.sku}} </p>
     </div>
     <hr>
     <div class="col-md-12 p-1">
-      <p>{{product.description }}</p>
+      <p>{{ product.description }}</p>
     </div>
   </div>
 

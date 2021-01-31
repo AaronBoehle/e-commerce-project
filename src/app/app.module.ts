@@ -16,6 +16,11 @@ import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
 import { RegistryComponent } from './registry/registry.component';
+import { CartComponent } from './cart/cart.component';
+import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
+import { RegistryListComponent } from './registry/registry-list/registry-list.component';
+import { RegistryDetailComponent } from './registry/registry-list/registry-detail/registry-detail.component';
+import {UserComponent} from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +35,11 @@ import { RegistryComponent } from './registry/registry.component';
     AuthComponent,
     LoadingSpinnerComponent,
     RegistryComponent,
+    CartComponent,
+    UserComponent,
+    UserDashboardComponent,
+    RegistryListComponent,
+    RegistryDetailComponent,
   ],
   imports: [
     BrowserModule,

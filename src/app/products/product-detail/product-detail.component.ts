@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from '../product.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Observable} from 'rxjs';
+import {Product} from '../product.model';
+import {finalize, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-detail',
@@ -23,8 +25,8 @@ export class ProductDetailComponent implements OnInit {
     );
   }
 
-  getProduct(){
-    return new Observable(subscriber => {
+  getProduct(): Observable<Product>{
+    return new Observable<Product>(subscriber => {
       subscriber.next(
         this.productService.getProduct(this.id));
     });
