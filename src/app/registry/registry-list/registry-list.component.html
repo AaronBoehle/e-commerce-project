@@ -1,11 +1,19 @@
-<div class="row py-3"
-     *ngIf="getRegistries() as registryList; let i = index">
-  <div class="col-md-12"
-      *ngFor="let registry of registryList; let i = index">
-   <div class="col-md-3 alert-danger p-3">
-     <div>
-       <h5>{{registry.name}}</h5>
-     </div>
-   </div>
+<div *ngIf="getRegistries() | async as registries"
+  class="row py-4">
+  <div *ngFor="let registry of registries; let i = index">
+    <div class="col-md-2 py-2">
+      <p >{{registry.name}}</p>
+    </div>
+    <div class="col-md-10 py-2">
+      <div *ngFor="let product of registry.products">
+        <p>{{product.name}}</p>
+        <p>{{product.description}}</p>
+      </div>
+    </div>
   </div>
 </div>
+
+
+
+
+

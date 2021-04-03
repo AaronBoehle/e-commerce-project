@@ -4,21 +4,12 @@ import {Product} from '../products/product.model';
 
 @Injectable({ providedIn: 'root' })
 export class RegistryService {
-  private registryList: Registry[] =
-    [
-    new Registry('Wish List', [new Product(123, 'test', 'test', 'test', 100.00, 1, 'test')]),
-    new Registry('Aaron\'s List', []),
-    new Registry('The Man Cave', [])
-  ];
+  private registryList: Registry[] = [];
 
-  constructor() {
-  }
+  constructor() {}
 
   setRegistries(registryList: Registry[]): void {
-    console.log('Service' + registryList.length);
     this.registryList = registryList;
-    this.registryList.forEach(x => console.log(x.name));
-
   }
 
   getRegistries(): Registry[]{

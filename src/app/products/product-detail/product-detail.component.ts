@@ -3,7 +3,7 @@ import {ProductService} from '../product.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Product} from '../product.model';
-import {finalize, map, tap} from 'rxjs/operators';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,6 +12,8 @@ import {finalize, map, tap} from 'rxjs/operators';
 })
 export class ProductDetailComponent implements OnInit {
   id: number;
+  addProductForm: FormGroup;
+  reviewForm: FormGroup;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
@@ -23,6 +25,18 @@ export class ProductDetailComponent implements OnInit {
         this.id = +params['id'];
       }
     );
+    this.addProductForm = new FormGroup({
+      quantity: new FormControl(null, Validators.required),
+      addTo: new FormControl(null, Validators.required)
+    });
+    this.reviewForm = new FormGroup({
+      rating: new FormControl(null, [
+        Validators.required, Validators.min(1), Validators.max(5)
+      ]),
+      header: new FormControl(null, Validators.required),
+      body: new FormControl(null, Validators.required),
+      media: new FormControl(null)
+    });
   }
 
   getProduct(): Observable<Product>{

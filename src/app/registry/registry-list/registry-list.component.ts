@@ -15,8 +15,10 @@ export class RegistryListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRegistries(): Registry[] {
-    return this.registryService.getRegistries();
+  getRegistries(): Observable<Registry[]> {
+    return new Observable<Registry[]>(subscriber => {
+      subscriber.next(this.registryService.getRegistries());
+    });
   }
 
 }

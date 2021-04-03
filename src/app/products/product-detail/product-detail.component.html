@@ -1,11 +1,11 @@
 <div
   *ngIf="(getProduct() | async) as product else null"
-  class="row my-5 p-2 border-bottom" style="min-height: 450px" >
+  class="row my-3 p-2 border-bottom" style="min-height: 450px" >
+  <div class="col-md-12">
+    <p>Breadcrumb goes here</p>
+  </div>
   <div class="col-md-4">
     <div class="row py-1">
-      <div class="col-md-12">
-        <p>Path goes here</p>
-      </div>
       <div
         class="col-md-12"
         style="min-height: 350px">

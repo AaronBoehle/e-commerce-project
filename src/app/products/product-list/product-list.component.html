@@ -4,7 +4,7 @@
     <hr>
   </div>
 
-  <div class="col-md-9 px-5 py-2" *ngIf="getProducts() | async as products">
+  <div class="col-md-9 px-5 py-2" *ngIf="getProducts() as products">
     <h5>{{ products.length }} items</h5>
     <p class="py-2">Breadcrumb goes here</p>
     <hr>

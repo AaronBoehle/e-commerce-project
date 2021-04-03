@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {ProductService} from '../../products/product.service';
 import {Product} from '../../products/product.model';
-import {tap} from 'rxjs/operators';
-import {AuthService} from '../../auth/auth.service';
+import {take, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {RegistryService} from '../../registry/registry.service';
 import {Registry} from '../../registry/registry.model';
@@ -13,8 +12,7 @@ export class DataStorageService {
 
   constructor(private http: HttpClient,
               private productService: ProductService,
-              private registryService: RegistryService,
-              private authService: AuthService) {}
+              private registryService: RegistryService) {}
 
   storeProducts(): Observable<Product[]> {
     const products = this.productService.getProducts();
@@ -25,35 +23,30 @@ export class DataStorageService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      'https://product-availability-56676.firebaseio.com/products.json')
-      .pipe(
+      'https://product-availability-56676.firebaseio.com/products.json'
+      // 'http://localhost:8080/products'
+    )
+      .pipe(take(1),
         tap(products => {
           this.productService.setProducts(products);
         }));
     }
 
-    getRegistries(): Observable<Registry[]> {
-    return new Observable<Registry[]>(sub  => {
-      const registryList: Registry[] = [
-        new Registry('Wish List', []),
-              new Registry('Aaron\'s List', []),
-              new Registry('The Man Cave', [])
-      ];
-      sub.next(registryList);
-    })
+    getRegistries(param: string): Observable<Registry[]> {
       // return this.http.get<Registry[]>(
-      // `http://localhost:8080/registry`)
-    // return new Observable<Registry[]>(registryList => {
-    //   registryList.next([
-    //       new Registry('Wish List', []),
-    //       new Registry('Aaron\'s List', []),
-    //       new Registry('The Man Cave', [])
-    //     ]);
-    // })
-      .pipe(
+      //   `http://localhost:8080/registry/${param}`)
+      return new Observable<Registry[]>(subscriber => {
+        const registryList: Registry[] =  [
+            new Registry('Wish List', [new Product(6396098, 'name1', 'description1', 'detail1', 100.00, 1, 'test', [])]),
+            new Registry('Aaron\'s List', [new Product(6396098, 'name2', 'description2', 'detail2', 200.00, 3, 'test', [])]),
+            new Registry('The Man Cave', [new Product(6396098, 'name3', 'description3', 'detail3', 300.00, 5, 'test', [])])
+          ];
+        subscriber.next(registryList);
+      }).pipe(
+        take(1),
         tap(registryList => {
-          console.log(registryList.length);
           this.registryService.setRegistries(registryList);
-        }));
+        })
+      );
     }
 }

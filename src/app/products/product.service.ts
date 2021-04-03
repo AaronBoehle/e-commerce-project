@@ -9,11 +9,9 @@ export class ProductService {
   setProducts(products: Product[]): void {
     this.products = products;
   }
-
   getProducts(): Product[] {
     return this.products.slice();
   }
-
   getProduct(index: number): Product {
     return this.products[index];
   }
