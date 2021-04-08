@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../product.model';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-product-item',
@@ -18,8 +18,6 @@ export class ProductItemComponent implements OnInit {
   }
 
   stockStatus() {
-    return new Observable<boolean>(bool => {
-      bool.next(this.product.quantity > 0);
-    });
+    return of( this.product.quantity > 0);
   }
 }

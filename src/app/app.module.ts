@@ -19,8 +19,8 @@ import { RegistryComponent } from './registry/registry.component';
 import { CartComponent } from './cart/cart.component';
 import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
 import { RegistryListComponent } from './registry/registry-list/registry-list.component';
-import { RegistryDetailComponent } from './registry/registry-list/registry-detail/registry-detail.component';
 import {UserComponent} from './user/user.component';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import {UserComponent} from './user/user.component';
     UserComponent,
     UserDashboardComponent,
     RegistryListComponent,
-    RegistryDetailComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

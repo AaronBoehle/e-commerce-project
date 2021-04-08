@@ -1,17 +1,17 @@
 <div
-  class="row border-bottom mt-3 py-3"
+  class="col-md-12 d-md-inline-flex border-bottom mt-3 px-0 py-3"
   style="min-height: 150px">
-  <div class="col-md-3">
+  <div class="col-md-3 pb-5">
     <a
       [routerLink]="[productIndex]"
       style="cursor: pointer">
       <img
-        class="py-1 img-fluid img-responsive text-center" style="max-height: 200px"
+        class="py-1 img-fluid img-responsive" style="max-height: 200px"
         [src]="product.imagePathUrl"
         alt="{{product.name}}">
     </a>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-6 pl-0">
     <a class="text-primary py-1"
        style="cursor: pointer"
        [routerLink]="[productIndex]">
@@ -31,9 +31,12 @@
       10% off your first purchase with signup!
     </p>
   </div>
-  <div class="col-md-2">
-    <button class="btn btn-warning border-dark mx-1 my-2" style="width: 150px" [disabled]="!(stockStatus() | async)">Add to Cart</button>
-    <div class="btn-group" style="width: 150px">
+  <div class="col-md-3 px-0 d-md-block">
+    <button
+      class="btn btn-warning border-dark mx-1 my-2"
+      style="width: 150px"
+      [disabled]="!(stockStatus() | async)">Add to Cart</button>
+    <div style="width: 150px">
       <button
         type="button"
         class="btn btn-light border-dark mx-1 my-2 dropdown-toggle" style="width: 150px">

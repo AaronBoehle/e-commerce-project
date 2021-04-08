@@ -42,23 +42,28 @@ export class AuthService {
     }));
   }
 
-  login(email: string | boolean, password: string) {
-    return this.http.post<AuthResponseData>(
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCZw2uwV4WJpGyWPBh7J9UM3wFNw-3eC9E',
-      {
-        email,
-        password,
-        returnSecureToken: true
-      })
-      .pipe(catchError(this.handleError),
-        tap(response => {
-          this.handleAuth(
-            response.email,
-            response.localId,
-            response.idToken,
-            +response.expiresIn);
-        }));
+  login(email?: string | boolean, password?: string) {
+    if (!email || !password) {
+      this.router.navigate(['/auth']);
+    } else {
+      return this.http.post<AuthResponseData>(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCZw2uwV4WJpGyWPBh7J9UM3wFNw-3eC9E',
+        {
+          email,
+          password,
+          returnSecureToken: true
+        })
+        .pipe(catchError(this.handleError),
+          tap(response => {
+            this.handleAuth(
+              response.email,
+              response.localId,
+              response.idToken,
+              +response.expiresIn);
+          }));
+    }
   }
+
 
   logout(){
     this.user.next(null);
@@ -78,6 +83,7 @@ export class AuthService {
       _tokenExpirationDate: string
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
+      this.user = new BehaviorSubject<User>(null);
       return;
     }
     if (userData._tokenExpirationDate) {

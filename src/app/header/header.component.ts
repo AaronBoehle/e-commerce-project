@@ -1,7 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DataStorageService} from '../shared/services/data-storage.service';
 import {AuthService} from '../auth/auth.service';
-import {Observable, Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {User} from '../user/user.model';
 
@@ -25,6 +25,10 @@ export class HeaderComponent implements OnInit {
         tap(user => {
           this.isAuthenticated = !! user;
         }));
+  }
+
+  onLogin(): void {
+    this.authService.login();
   }
 
   onLogout(): void {

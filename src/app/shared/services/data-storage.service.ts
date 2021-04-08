@@ -32,20 +32,28 @@ export class DataStorageService {
         }));
     }
 
-    getRegistries(param: string): Observable<Registry[]> {
+    getRegistryList(registryID: number): Observable<Registry[]> {
       // return this.http.get<Registry[]>(
       //   `http://localhost:8080/registry/${param}`)
       return new Observable<Registry[]>(subscriber => {
         const registryList: Registry[] =  [
-            new Registry('Wish List', [new Product(6396098, 'name1', 'description1', 'detail1', 100.00, 1, 'test', [])]),
-            new Registry('Aaron\'s List', [new Product(6396098, 'name2', 'description2', 'detail2', 200.00, 3, 'test', [])]),
-            new Registry('The Man Cave', [new Product(6396098, 'name3', 'description3', 'detail3', 300.00, 5, 'test', [])])
+            new Registry('Wish List', false, [
+              new Product(6396098, 'Product 1', 'description1', 'detail1', 100.00, 1, 'test', []),
+              new Product(6396099, 'Product 1.2', 'description1.2', 'detail1.2', 100.00, 15, 'test', []),
+              new Product(6396100, 'Product 1.3', 'description1.3', 'detail1.3', 100.00, 34, 'test', [])
+            ]),
+            new Registry('Aaron\'s List', true, [
+              new Product(6396098, 'Product 2', 'description2', 'detail2', 200.00, 3, 'test', [])
+            ]),
+            new Registry('The Man Cave', false, [
+              new Product(6396098, 'Product 3', 'description3', 'detail3', 300.00, 5, 'test', [])
+            ])
           ];
         subscriber.next(registryList);
       }).pipe(
         take(1),
         tap(registryList => {
-          this.registryService.setRegistries(registryList);
+          this.registryService.setRegistryList(registryList);
         })
       );
     }

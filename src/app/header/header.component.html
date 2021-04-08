@@ -1,21 +1,23 @@
 <nav class="navbar navbar-default bg-info border-bottom">
-  <div class="container-fluid">
+  <div class="container-fluid px-5 mx-5">
     <div class="navbar-header">
       <a routerLink="/products" class="navbar-brand text-white">Product Availability</a>
-      <a
-        routerLink="/auth"
-        class="text-white px-2"
-        *ngIf="!(getUser() | async)">Login</a>
-      <a
-        class="text-white px-2"
-        style="cursor: pointer"
-        *ngIf="(getUser() | async)"
-        (click)="onLogout()">Logout</a>
       <a
         class="text-white px-2"
         style="cursor: pointer"
          *ngIf="(getUser() | async)"
         (click)="onSaveProducts()">Save Products</a>
     </div>
+    <a
+      (click)="onLogin()"
+      class="text-white px-2 justify-content-end"
+      style="cursor: pointer; font-size: x-large"
+      *ngIf="!(getUser() | async); else logout">Login</a>
+    <ng-template #logout>
+      <a
+        class="text-white px-2 justify-content-end"
+        style="cursor: pointer; font-size: x-large"
+        (click)="onLogout()">Logout</a>
+    </ng-template>
   </div>
 </nav>

@@ -11,6 +11,7 @@ import {RegistryComponent} from './registry/registry.component';
 import {CartComponent} from './cart/cart.component';
 import {RegistryListComponent} from './registry/registry-list/registry-list.component';
 import {RegistryResolverService} from './registry/registry-resolver.service';
+import {AuthGuard} from './auth/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
@@ -19,9 +20,12 @@ const appRoutes: Routes = [
       { path: 'shop', component: ProductListComponent, resolve: [ProductResolverService]},
       { path: 'shop/:id', component: ProductDetailComponent, resolve: [ProductResolverService]}
     ]},
-  { path: 'registry', component: RegistryComponent, children: [
-      { path: '', redirectTo: ':id', pathMatch: 'full' },
-      { path: ':id', component: RegistryListComponent, resolve: [RegistryResolverService]}
+  { path: 'registry',
+    component: RegistryComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: ':registry', pathMatch: 'full' },
+      { path: ':registry', component: RegistryListComponent, resolve: [RegistryResolverService]}
     ]},
   { path: 'auth', component: AuthComponent },
   { path: 'cart', component: CartComponent },

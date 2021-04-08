@@ -14,7 +14,7 @@ export class RegistryResolverService implements Resolve<Registry[]>{
 
   resolve(route: ActivatedRouteSnapshot,
           state: RouterStateSnapshot): Observable<Registry[]> | Promise<Registry[]> | Registry[] {
-    const registryList: Registry[] = this.registryService.getRegistries();
-    return (registryList?.length === 0) ? this.dataStorageService.getRegistries('userId') : registryList;
+    const registryList: Registry[] = this.registryService.getRegistryList();
+    return (registryList?.length === 0) ? this.dataStorageService.getRegistryList(12345) : registryList;
   }
 }
