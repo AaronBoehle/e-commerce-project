@@ -40,7 +40,7 @@ export class AuthComponent implements OnInit {
   onSubmit(): void {
     const email: boolean | string = this.signupForm.value.email;
     const password: string = this.signupForm.value.password;
-    let authObservable: Observable<AuthResponseData>;
+    let authObservable: Observable<AuthResponseData> = new Observable<AuthResponseData>();
     this.isLoading = true;
     if (!this.signupForm.valid) {
       return;

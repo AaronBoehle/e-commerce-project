@@ -77,10 +77,10 @@ export class AuthService {
 
   autoLogin() {
     const userData: {
-      email: string,
-      userId: string,
-      _token: string,
-      _tokenExpirationDate: string
+      email: string;
+      userId: string;
+      _token: string;
+      _tokenExpirationDate: string;
     } = JSON.parse(localStorage.getItem('userData'));
     if (!userData) {
       this.user = new BehaviorSubject<User>(null);

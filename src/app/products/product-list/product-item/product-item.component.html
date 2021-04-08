@@ -35,7 +35,7 @@
     <button
       class="btn btn-warning border-dark mx-1 my-2"
       style="width: 150px"
-      [disabled]="!(stockStatus() | async)">Add to Cart</button>
+      [disabled]="(!(stockStatus() | async))">Add to Cart</button>
     <div style="width: 150px">
       <button
         type="button"

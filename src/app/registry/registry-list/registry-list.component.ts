@@ -19,9 +19,7 @@ export class RegistryListComponent implements OnInit {
   }
   getRegistryList(): Registry[] {
     return this.registryService.getRegistryList()
-      .sort(registry => {
-        return registry.isDefault === true ? -1 : 1;
-      });
+      .sort(registry => registry.isDefault === true ? -1 : 1);
   }
   getRegistry(registryIndex: number) {
     this.selected = this.getRegistryList()[registryIndex];
