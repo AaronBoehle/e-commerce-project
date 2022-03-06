@@ -13,6 +13,6 @@ export class ProductService {
     return this.products.slice();
   }
   getProduct(index: number): Product {
-    return this.products.find(x => x.sku === index);
+    return this.products.find(x => x.id === index);
   }
 }

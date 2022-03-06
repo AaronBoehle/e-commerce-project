@@ -23,8 +23,8 @@ export class DataStorageService {
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      'https://product-availability-56676.firebaseio.com/products.json'
-      // 'http://localhost:8080/products'
+      // 'https://product-availability-56676.firebaseio.com/products.json'
+      'http://localhost:8080/products'
     )
       .pipe(take(1),
         tap(products => {

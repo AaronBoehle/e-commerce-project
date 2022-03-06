@@ -1,6 +1,6 @@
 
 export class Product {
-  public sku: number;
+  public id: number;
   public name: string;
   public description: string;
   public overview: string;
@@ -9,8 +9,8 @@ export class Product {
   public imagePathUrl: string;
   public reviews: [];
 
-  constructor(sku: number, name: string, desc: string, detail: string, listPrice: number, qty: number, img: string, reviews: []) {
-    this.sku = sku;
+  constructor(id: number, name: string, desc: string, detail: string, listPrice: number, qty: number, img: string, reviews: []) {
+    this.id = id;
     this.name = name;
     this.description = desc;
     this.overview = detail;

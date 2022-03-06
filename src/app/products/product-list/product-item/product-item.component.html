@@ -18,7 +18,7 @@
       {{ product.name }}
     </a>
     <br>
-    <span class="text-secondary" style="font-size: .75em">SKU:{{product.sku}}</span>
+    <span class="text-secondary" style="font-size: .75em">SKU:{{product.id}}</span>
     <h5 class="text-dark pt-2"><b>{{ product.listPrice | currency }}</b></h5>
     <span
       [ngStyle]="{color: (stockStatus() | async) ? 'green' : 'red'}">
